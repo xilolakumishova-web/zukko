@@ -1,0 +1,6 @@
+{
+  "appId": "uz.zukko.app",
+  "appName": "Zukko",
+  "webDir": "www",
+  "android": { "backgroundColor": "#FFF6E9" }
+}

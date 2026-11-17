@@ -1,0 +1,17 @@
+{
+  "name": "zukko",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Zukko — Prezident maktabiga tayyorlov (3-4 sinf)",
+  "scripts": {
+    "build": "node scripts/copy-web.js"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/core": "^6.1.2"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^6.1.2"
+  }
+}

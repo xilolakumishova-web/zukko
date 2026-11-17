@@ -1,0 +1,5 @@
+const C='zukko-v2';
+const FILES=['./','index.html','css/style.css','manifest.json','icons/icon.svg','js/core.js','js/q-math.js','js/q-eng.js','js/q-logic.js','js/q-story.js','js/quiz.js','js/q-extra.js','js/app.js','js/games/sudoku.js','js/games/tangram.js','js/games/chain.js','js/games/ballsort.js','js/games/blocks.js','js/games/chess.js','js/games/checkers.js','js/games/qwirkle.js','js/games/set.js','js/games/small.js'];
+self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting())));
+self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==C).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
+self.addEventListener('fetch',e=>{ if(e.request.method!=='GET') return; e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(res=>{ const cp=res.clone(); if(res.ok && new URL(e.request.url).origin===location.origin) caches.open(C).then(c=>c.put(e.request,cp)); return res; }).catch(()=>caches.match('index.html')))); });
